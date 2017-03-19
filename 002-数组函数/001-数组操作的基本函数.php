@@ -41,3 +41,9 @@ $new_arr = each($arr);         //将返回数组当前元素的一个键名/值�
 //array(4) { [1]=> string(5) "first" ["value"]=> string(5) "first" [0]=> int(1) ["key"]=> int(1) }
 list($key,$value)=each($arr);  //获得数组当前元素的键名和值,key 2 ,value :second
 
+//3、数组和变量之间的转换
+echo '<br/>';
+$arr = ['name'=>'demon','mobile'=>'13800138000'];
+extract($arr);                 //用于把数组中的元素转换成变量导入到当前文件中，键名当作变量名，值作为变量值。
+echo '名字:'.$name.'-手机号:'.$mobile;
+var_dump(compact('name','mobile'));       //用给定的变量名创建一个数组

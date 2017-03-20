@@ -1,22 +1,15 @@
 <?php
-/*
- *   数组的比较主要是比较数组长度，数组元素的值
- *   ==和===
- *   ==：要求数组长度一致，数组元素的值相等，下标也要相等
- *   ===：数组长度一致，值和类型都完全一致，出现的顺序必须也相同
- */
+//1.初始化，创建一个新cURL资源
+$ch = curl_init();
 
-$arr1 = [1,2,3];
-$arr2 = [3,2,1];
-$arr3 = [2=>3,1=>2,0=>1];
-$arr4 = [1,2,3];
+//2.设置URL和相应的选项
+curl_setopt($ch, CURLOPT_URL, "http://www.baidu.com/");
+curl_setopt($ch, CURLOPT_HEADER, 0);
 
+//3.抓取URL并把它传递给浏览器
+$res = curl_exec($ch);
 
-//==比较
-var_dump($arr1 == $arr2);   //false
-var_dump($arr1 == $arr3);   //true
-var_dump($arr1 == $arr4);   //true
+//4.关闭cURL资源，并且释放系统资源
+curl_close($ch);
 
-//===比较
-var_dump($arr1 === $arr2);  //false
-var_dump($arr2 === $arr3);  //false
+var_dump($res);

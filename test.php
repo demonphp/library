@@ -1,51 +1,37 @@
 <?php
 
-function myfunction1($value,$key,$p)
-{
-    echo "$key $p $value<br>";
+function myfunction1($a,$b) {
+    if ($a==$b) return 0;
+    return ($a<$b)?-1:1;
 }
-$arr = array("a"=>"red","b"=>"green","c"=>"blue");
+//1、通过元素值对数组排序
+$arr = ['a'=>1,'b'=>2,'c'=>3,'d'=>0];
+sort($arr);                   //由小到大的顺序排序（第二个参数为按什么方式排序）忽略键名的数组排序
+//array(4) { [0]=> int(0) [1]=> int(1) [2]=> int(2) [3]=> int(3) }
+rsort($arr);                  //由大到小的顺序排序（第二个参数为按什么方式排序）忽略键名的数组排序
+//array(4) { [0]=> int(3) [1]=> int(2) [2]=> int(1) [3]=> int(0) }
+$arr1 = usort($arr,"myfunction1");   //使用用户自定义的比较函数对数组中的值进行排序
+//usort($a, array("TestObj", "cmp_obj")); //array('类名','类成员方法')
+asort($arr);                  //由小到大的顺序排序（第二个参数为按什么方式排序）保留键名的数组排序
+arsort($arr);                 //由大到小的顺序排序（第二个参数为按什么方式排序）保留键名的数组排序
+uasort($arr,"myfunction1");   //使用用户自定义的比较函数对数组中的值进行排序,保留键名的数组排序
 
-array_walk($arr,'myfunction1','words');    //使用用户函数对数组中的每个成员进行处理（第三个参数传递给回调函数myfunction）
-
-
-$arr1 = [1,2,3,4,5];
-function myfunction2($v)
-{
-    echo $v*$v.'<br/>';
+//2、通过键名对数组排序
+$arr = ['a'=>1,'c'=>3,'d'=>0,'b'=>2];
+ksort($arr);  //按照键名正序排序
+//Array ( [a] => 1 [b] => 2 [c] => 3 [d] => 0 )
+krsort($arr);  //按照键名逆序排序
+//Array ( [d] => 0 [c] => 3 [b] => 2 [a] => 1 )
+function myfunction2($a,$b) {
+    if ($a==$b) return 0;
+    return ($a<$b)?-1:1;
 }
-array_map("myfunction2",$arr1);      //可以处理多个数组（当使用两个或更多数组时，他们的长度应该相同）
+uksort($arr,"myfunction2");
+//Array ( [a] => 1 [b] => 2 [c] => 3 [d] => 0 )
 
-
-$arr1 = [1,2,3,4,5];
-$arr2 = [1,2,3,4,6];
-function myfunction3($v1,$v2)
-{
-    if ($v1===$v2)
-    {
-        echo "same<br/>";
-    }else {
-        echo "different<br/>";
-    }
-}
-array_map("myfunction3",$arr1,$arr2);        //可以处理多个数组（当使用两个或更多数组时，他们的长度应该相同）
-
-function myfunction4($var)
-{
-    // returns whether the input integer is odd
-    return ($var & 1);
-}
-
-$arr = array("a"=>1, "b"=>2, "c"=>3, "d"=>4, "e"=>5);
-
-print_r(array_filter($arr, "myfunction4"));  //回调函数,使用回调函数过滤数组中的每个元素，如果回调函数为TRUE，数组的当前元素会被包含在返回的结果数组中，数组的键名保留不变
-//Array ( [a] => 1 [c] => 3 [e] => 5 )
-
-
-function myfunction5($v1,$v2)
-{
-    return $v1+$v2;
-}
-$a=array(10,15,20);
-print_r(array_reduce($a,"myfunction5",5));    //转化为单值函数（*为数组的第一个值）
-
+//3、自然排序法排序(不建议常用)
+$arr = ['a'=>1,'c'=>2,'C'=>2,'B'=>2,'b'=>2,'d'=>2,'D'=>2];
+natsort($arr);  //自然排序（忽略键名）
+//Array ( [a] => 1 [d] => 2 [D] => 2 [b] => 2 [B] => 2 [c] => 2 [C] => 2 )
+natcasesort($arr);  //自然排序（忽略大小写，忽略键名）
+//Array ( [a] => 1 [c] => 2 [C] => 2 [B] => 2 [b] => 2 [d] => 2 [D] => 2 )

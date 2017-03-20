@@ -10,31 +10,22 @@
 #  InnoDB：只会创建一个表结构文件，其他的索引和数据存放在ibdata1文件中
 #  Myisam：会创建三个文件，一个是结构文件，一个是数据文件，一个是索引文件
 #eg:
-CREATE TABLE IF NOT EXISTS `l_blog_art` (
+CREATE TABLE IF NOT EXISTS `mytable` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(50) NOT NULL DEFAULT '' COMMENT '分类的名称',
-  `title` varchar(255) NOT NULL DEFAULT '' COMMENT '标题',
-  `keywords` varchar(255) NOT NULL DEFAULT '' COMMENT '关键字',
-  `description` varchar(255) NOT NULL DEFAULT '' COMMENT '描述',
-  `content` text NOT NULL COMMENT '文章内容',
-  `view` int(11) NOT NULL DEFAULT '0' COMMENT '查看次数',
-  `thumb` varchar(255) NOT NULL COMMENT '缩略图',
-  `order` tinyint(11) NOT NULL DEFAULT '0' COMMENT '排序,值越大越前',
-  `author` varchar(25) NOT NULL COMMENT '该文章的作者',
-  `addtime` timestamp NULL DEFAULT NULL COMMENT '文章的发布时间',
-  `cate_id` int(11) NOT NULL DEFAULT '0' COMMENT '父级分类的id,默认为0',
+  `age` tinyint(2) NOT NULL DEFAULT 0 COMMENT '年龄',
   `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `deleted_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' COMMENT '该文章删除时间',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='文章分类表' AUTO_INCREMENT=1;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='学生表' AUTO_INCREMENT=1;
 
 #2.查看表：
 #  1.查看表基本信息：
   show tables;
   show tables like 'pattern';
 # 2.查看表的创建语句：
-show create table `l_blog_art`;
+show create table `mytable`;
 # 3.查看表结构：desc|describe 表名/show columns from 表名
   desc `l_blog_art`;
 

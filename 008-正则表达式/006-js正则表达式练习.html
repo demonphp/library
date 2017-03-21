@@ -174,7 +174,7 @@
     var str = '我...我是是...一个....个..帅帅帅帅....哥';
     var reg = /\.+/gi;
     str = str.replace(reg,'');
-    reg = /(.)\1*/gi
+    reg = /(.)\1{1,}/gi;                //\1代表反向引用,\n缓存区内容
     str = str.replace(reg,'$1');
     document.write(str);
 </script>

@@ -85,7 +85,98 @@
     }else {
         document.write('不是手机号码');
     }
- 
+
+    //10.定位符
+    document.write('<h1>10.定位符-单词边界\\b</h1>');
+    var str = 'anhello,my name is zhangsan';
+    var reg = /\ban/gi;
+    var arr = str.match(reg);
+
+    for(var i=0;i<arr.length;i++) {
+        document.write(arr[i]+'<hr/>');     
+    }
+
+    document.write(str.search(reg));
+    //11.定位符
+    document.write('<h1>10.定位符-非单词边界\\B</h1>');
+    var str = 'anhello,my name is zhangsan';
+    var reg = /\Ban\B/gi;
+    var arr = str.match(reg);
+    for(var i=0;i<arr.length;i++) {
+        document.write(arr[i]+'<hr/>');     //zhang   中的an
+    }
+
+    document.write(str.search(reg)); 
+
+    //12转义符 
+    document.write('<h1>12.转义符</h1>');
+    var str = 'anhello,my na(me is zhangsan';
+    var reg = /\(/gi;
+    var arr = str.match(reg);
+    for(var i=0;i<arr.length;i++) {
+        document.write(arr[i]+'<hr/>');     //zhang   中的an
+    }
+
+    document.write(str.search(reg)); 
+
+    //13.选择匹配符 在正则表达式可以采用|（或的意思）代表选择匹配符
+    document.write('<h1>13.选择匹配符</h1>');
+    var str = 'hellojavascript,hellophp';
+    //1.第一种
+    // var reg = /hellojavascript|hellophp/gi;
+    //2.第二种
+    var reg = /hello(javascript|php)/gi;
+    var arr = str.match(reg);
+    for(var i=0;i<arr.length;i++) {
+        document.write(arr[i]+'<hr/>');     //zhang   中的an
+    }
+
+    //14特殊用法-前向后正向预查,匹配(?=)中的吊丝,但不包括吊丝
+    document.write('<h1>14.特殊用法-正向预查</h1>');
+    var str = '王大锤吊丝，小明吊丝';
+    var reg = /[\u4e00-\u9fa5]+(?=吊丝)/gi;
+    var arr = str.match(reg);
+    for(var i=0;i<arr.length;i++) {
+        document.write(arr[i]+'<hr/>');
+    }
+
+    document.write(str.search(reg)); 
+
+    //14特殊用法-前向后负向预查,不匹配(?:)中的吊丝
+    document.write('<h1>14.特殊用法-反向预查</h1>');
+    var str = '小明吊丝，大明好人';
+    var reg = /[\u4e00-\u9fa5]+(?!吊丝)$/gi;
+    var arr = str.match(reg);
+    for(var i=0;i<arr.length;i++) {
+        document.write(arr[i]+'<hr/>');
+    }
+
+    document.write(str.search(reg)); 
+
+    document.write('<h1>14.特殊用法-查询结果，但不捕获</h1>');
+    var str = 'hellojavascript,hellophp';
+    // var reg = /hello(javascript|php)/gi;
+    var reg = /hello(?:javascript|php)/gi;      //不捕获子表达式
+    var arr = str.match(reg);
+    while(result = reg.exec(str)) {
+        document.write(result+'<hr/>');
+    }
+
+
+
+    //案例1.9999999999每三个分割逗号,即99,999,999,999
+    document.write('<h1>16.案例1.9999999999每三个分割逗号,即99,999,999,999</h1>');
+    var str = '99999999999'.replace(/\d{1,3}(?=(\d{3})+$)/g, '$&,');  //$&与 regexp 相匹配的子串。
+    document.write(str);
+
+    //案例2.结巴程序
+    document.write('<h1>17.案例2.结巴程序</h1>')
+    var str = '我...我是是...一个....个..帅帅帅帅....哥';
+    var reg = /\.+/gi;
+    str = str.replace(reg,'');
+    reg = /(.)\1*/gi
+    str = str.replace(reg,'$1');
+    document.write(str);
 </script>
 </body>
 </html>

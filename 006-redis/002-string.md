@@ -7,7 +7,7 @@
     获取key对应的string值，如果key不存在返回 nil,
     语法：get 键值
 
-（3）Setnx
+（3）setnx
     设置键时，先判断一下该键是否存在，如果key已经存在，返回0,nx是not exist的意思。
     若键已经存在，则设置不成功，返回0
 

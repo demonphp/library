@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>正则表达式工具箱js测试</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+<body>
+字符串：<input type='text' id='content' size='50'><hr>
+正  则: <input type='text' id='exp' size='50'><hr>
+<textarea cols='70' rows='10' id='result'></textarea><hr>
+<input type='button' id='btn1' value='test'>
+<input type='button' id='btn2' value='exec'>
+<input type='button' id='btn3' value='search'>
+<input type='button' id='btn4' value='match'>
+<input type='button' id='btn5' value='replace'>
+<input type='button' id='btn6' value='split'>
+</body>
+</html>
+
+<script>
+    function $(id) {
+        return document.getElementById(id);
+    }
+    window.onload = function() {
+        $('btn1').onclick = function() {
+            //获取字符串的内容
+            var content = $('content').value;
+            //获取正则内容
+            var reg = eval('/'+$('exp').value+'/gi');
+            //获取显示框
+            $('result').value = reg.test(content);
+        }
+        $('btn2').onclick = function() {
+            //获取字符串的内容
+            var content = $('content').value;
+            //获取正则内容
+            var reg = eval('/'+$('exp').value+'/gi');
+            //获取显示框
+            $('result').value = '';
+            var res;
+            while(res = reg.exec(content)) {
+                $('result').value += res+'\n';
+            }
+        }
+        $('btn4').onclick = function() {
+            //获取字符串的内容
+            var content = $('content').value;
+            //获取正则内容
+            var reg = eval('/'+$('exp').value+'/gi');
+            //获取显示框
+            $('result').value = '';
+            var arr = content.match(reg);
+            for(var i=0;i<arr.length;i++) {
+                $('result').value += arr[i]+'\n';
+            }
+        }
+    }
+</script>

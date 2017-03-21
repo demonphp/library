@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>正则表达式练习</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+<body>
+<script>
+    //1.exec的使用方法
+    var str = 'abc123asdfas456adsfasdf567asdfas';
+    var reg = /\d{3}/gi;
+    var result;
+    document.write('<h1>1.exec的使用方法</h1>');
+    while(result = reg.exec(str)) {
+        document.write(result + '<hr/>');
+    }
+
+    //2.exec与子表达式
+    var str = 'abc123asdfas456adsfasdf567asdfas';
+    var reg = /(\d)(\d{2})/gi;
+    var result;
+    document.write('<h1>2.exec的与子表达式</h1>');
+    while(result = reg.exec(str)) {
+        document.write(result + '<hr/>');
+    }
+
+    //3.限定符-1匹配已知数目的字符串
+    var str = 'abasdfas23423234234asdfasdferwere';
+    var reg = /\d{3}/gi;
+    var result;
+    document.write('<h1>3.限定符-1匹配已知数目的字符串</h1>');
+    document.write(str.match(reg));
+
+    //4.限定符-2匹配最少有多少个字符串
+    var str = 'abasdfas23423234234asdfasdferwere';
+    var reg = /\d{3,}/gi;
+    var result;
+    document.write('<h1>4.限定符-2匹配最少有多少个字符串</h1>');
+    document.write(str.match(reg));
+
+    //5.限定符-3匹配某一数量范围内的字符串
+    var str = 'abasdfas23423234234asdfasdferwere';
+    var reg = /\d{3,6}/gi;
+    var result;
+    document.write('<h1>5.限定符-3匹配某一数量范围内的字符串</h1>');
+    document.write(str.match(reg));
+
+    //6.贪婪模式与非贪婪模式
+    var str = 'abasdfas23423234234asdfasdferwere';
+    var reg = /\d{3,6}?/gi;
+    var result;
+    document.write('<h1>6.贪婪模式与非贪婪模式</h1>');
+    document.write(str.match(reg));
+
+    //7.字符匹配符
+    document.write('<h1>7.字符匹配符-\\n特殊字符</h1>');
+    var str ='hello\ni am zhangsan';
+    var reg = /\n/gi;
+
+    console.log(str);
+    document.write(str+'<br/>');
+
+    var newstr = str.replace(reg,'')
+    document.write(newstr+'<br/>');
+    console.log(newstr);
+
+    var arr = reg.exec(str);
+    console.log(arr);
+
+    //8.字符匹配符
+    document.write('<h1>8.字符匹配符-中文字符</h1>');
+    var str ='中an国gsa你ndgsdkagj好';
+    var reg = /[\u4e00-\u9fa5]/g
+    while(result = reg.exec(str)) {
+        document.write(result + '<hr/>');
+    }
+
+    //9定位符
+     document.write('<h1>9.定位符-手机号码</h1>');
+    var tel = '13800138000';
+    var reg = /^1[35789]\d{9}$/g;
+    var res = reg.test(tel);
+    if(res) {
+        document.write('是手机号码');
+    }else {
+        document.write('不是手机号码');
+    }
+ 
+</script>
+</body>
+</html>
+

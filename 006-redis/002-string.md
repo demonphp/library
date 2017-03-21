@@ -45,14 +45,15 @@
               1)  "xiaohong"
               2)   null
 
-##（11）incr|incrby
-    对key的值做加加操作，并返回新的值。加指定值，key不存在时候会设置key,并认为原来的value是0。
+##（11）incr|incrby (只能int类型相加对key的值做加加操作，并返回新的值。加指定值，key不存在时候会设置key,并认为原来的value是0。)
+    语法: incr 键
+         incr age
 
-##（12）decr|decrby
-    对key的值做减减操作,减指定值
+##（12）decr|decrby(只能int)对key的值做减减操作,减指定值，key不存在时候会设置key,并认为原来的value是0。
+        decr num
 
-##（13）append
-    给指定key的字符串追加value,返回新字符串值的长度。
+##（13）append 给指定key的字符串追加value,返回新字符串值的长度。
+        append name  li
 
-##（14）strlen
-    取指定key的value值的长度。
+##（14）strlen  取指定key的value值的长度。
+       strlen name

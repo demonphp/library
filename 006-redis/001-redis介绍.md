@@ -20,3 +20,11 @@
    list  (链表)      ：可以模拟队列和栈。数据存储是有顺序的。
    set   (集合)
    zset  (有序集合)  : 集合里面的内容是有序的。
+
+# 4.设置类型规范(个人认为,用于项目内规范)
+    类型:     前缀-中缀-key
+   string    st_项目名_key值
+   hash      ha_项目名_key值
+   list      li_项目名_key值
+   set       se_项目名_key值
+   zset      zs_项目名_key值

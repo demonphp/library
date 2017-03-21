@@ -1,9 +1,10 @@
-# Redis hash是一个string类型的field和value的映射表。它的添加、删除操作都是0（1）（平均）。hash特别适合用于存储对象。相较于将对象的每个字段存成单个string类型。将一个对象存储在hash类型中会占用更少的内存，并且可以更方便的存取整个对象。
+# Redis hash
+  是一个string类型的field和value的映射表。它的添加、删除操作都是0（1）（平均）。hash特别适合用于存储对象。相较于将对象的每个字段存成单个string类型。将一个对象存储在hash类型中会占用更少的内存，并且可以更方便的存取整个对象。
 
-（1）hset
-设置hash field为指定值，如果 key不存在，则先创建。
-语法：
-hset  哈希名称  字段名称   值
+##（1）hset 设置hash field为指定值，如果 key不存在，则先创建。
+      语法：hset  哈希名称  字段名称   值
+          hset user1 name xiaohong
+          hset user2 name xiaoming
 
 （2）hget
 取出hash field的值。语法：hget 哈希名称  字段名称

@@ -1,0 +1,42 @@
+# 说明
+在PHP中有两套正则表达式函数库。一套是由PCRE（Perl Compatible Regular Expression）库提供的。PCRE库使用和Perl相同的语法规则实现了正则表达式的模式匹配，其使用以“preg_”为前缀命名的函数。另一套是由POSIX（Portable Operation System interface）扩展库提供的。POSIX扩展的正则表达式由POSIX 1003.2定义，一般使用以“ereg_”为前缀命名的函数。
+两套函数库的功能相似，执行效率稍有不同。一般而言，实现相同的功能，使用PCRE库的效率略占优势。
+
+# 6.3.1 正则表达式的匹配
+##  1．preg_match()
+函数原型：int preg_match (string $pattern, string $content [, array $matches])
+preg_match ()函数在$content字符串中搜索与$pattern给出的正则表达式相匹配的内容。如果提供了$matches，则将匹配结果放入其 中。$matches[0]将包含与整个模式匹配的文本，$matches[1]将包含第一个捕获的与括号中的模式单元所匹配的内容，以此类推。该函数只 作一次匹配，最终返回0或1的匹配结果数。代码6.1给出preg_match()函数的一段代码示例。
+
+
+##  2．preg_grep()
+函数原型：array preg_grep (string $pattern, array $input)
+preg_grep()函数返回一个数组，其中包括了$input数组中与给定的$pattern模式相匹配的单元。对于输入数组$input中的每个元素，preg_grep()也只进行一次匹配。代码6.3给出的示例简单地说明了preg_grep()函数的使用。
+
+##  3．ereg()和eregi()
+ereg()是POSIX扩展库中正则表达式的匹配函数。eregi()是ereg()函数的忽略大小写的版 本。二者与preg_match的功能类似，但函数返回的是一个布尔值，表明匹配成功与否。需要说明的是，POSIX扩展库函数的第一个参数接受的是正则 表达式字符串，即不需要使用分界符。例如，代码6.2是一个关于文件名安全检验的方法。
+
+# 6.3.2 进行全局正则表达式匹配
+##  1．preg_match_all()
+与preg_match()函数类似。如果使用了第三个参数，将把所有可能的匹配结果放入。本函数返回整个模 式匹配的次数（可能为0），如果出错返回False。下面是一个将文本中的URL链接地址转换为HTML代码的示例。代码6.4是 preg_match_all()函数的使用范例。
+
+##  2．多行匹配
+仅仅使用POSIX下的正则表式函数，很难进行复杂的匹配操作。例如，对整个文件（尤其是多行文本）进行匹配查找。使用ereg()对此进行操作的一个方法是分行处理。代码6.5的示例演示了ereg()如何将INI文件的参数赋值到数组之中。
+
+#6.3.3 正则表达式的替换
+## 1．preg_replace()
+函数原型：mixed preg_replace (mixed $pattern, mixed $replacement, mixed $subject [, int $limit])
+preg_replace较ereg_replace的功能更加强大。其前三个参数均可以使用数组；第四个参数$limit可以设置替换的次数，默认为全部替换。
+
+## 2．ereg_replace()和eregi_replace()
+函数原型：string ereg_replace (string $pattern, string $replacement, string $string)
+string eregi_replace (string $pattern, string $replacement, string $string)
+ereg_replace()在$string中搜索模式字符串$pattern，并将所匹配结果替换 为$replacement。当$pattern中包含模式单元（或子模式）时，$replacement中形如“\1”或“$1”的位置将依次被这些子 模式所匹配的内容替换。而“\0”或“$0”是指整个的匹配字符串的内容。需要注意的是，在双引号中反斜线作为转义符使用，所以必须使用“\\0”，“ \\1”的形式。
+eregi_replace()和ereg_replace()的功能一致，只是前者忽略大小写。
+
+#6.3.4 正则表达式的拆分
+## 1．preg_split()
+本函数与split函数功能一致
+
+## 2．split()和spliti()
+本函数返回一个字符串数组，每个单元为$string经正则表达式$pattern作为边界分割出的子串。如 果设定了$limit，则返回的数组最多包含$limit个单元。而其中最后一个单元包含了$string中剩余的所有部分。spliti是split的 忽略大小版本。
+

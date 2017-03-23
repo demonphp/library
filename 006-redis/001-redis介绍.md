@@ -59,4 +59,5 @@
 
 # 7.相关文章
     http://www.cnblogs.com/wang-meng/p/5808712.html  说明
-    http://www.cnblogs.com/myright/articles/5408276.html 扩展安装
+
+    http://www.cnblogs.com/myright/articles/5408276.html 扩展安装---1

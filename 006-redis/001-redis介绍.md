@@ -23,12 +23,17 @@
    zset  (有序集合)  : 集合里面的内容是有序的。
 
 # 4.设置类型规范(个人认为,用于项目内规范)
-    类型:     前缀-中缀-key
-   string    st_项目名_key值
-   hash      ha_项目名_key值
-   list      li_项目名_key值
-   set       se_项目名_key值
-   zset      zs_项目名_key值
+   类型:      项目名_类型前缀_作用_key值(其中key值是多层的用:分割)
+   string    项目名_st_作用_key值
+   hash      项目名_ha_作用_key值
+   list      项目名_li_作用_key值
+   set       项目名_se_作用_key值
+   zset      项目名_zs_作用_key值
+
+   #作用包括以下几点(个人认为,用于项目内规范,如有其它请补充)
+   incr        自增
+   table       跟数据库表一样用于储存多字段,hash一般是该类型
+   rele        关联(如hash需要其它的关联)
 
    1、 key不要太长，最好不要操作1024个字节，这不仅会消耗内存还会降低查找效率
    2、 key不要太短，如果太短会降低key的可读性

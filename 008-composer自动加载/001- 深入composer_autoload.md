@@ -2,6 +2,7 @@
     http://www.cnblogs.com/CpNice/p/4119925.html(PHP自动加载类__autoload()浅谈)
     http://www.cnblogs.com/myluke/archive/2011/06/25/2090119.html(PHP中spl_autoload_register函数的用法)
     https://laravel-china.org/topics/1002(深入 Composer autoload)
+    http://www.cnblogs.com/yue-blog/p/5904275.html(Composer实现PHP中类的自动加载)
 
 # 2.自动加载的类型
     总体来说 composer 提供了几种自动加载类型

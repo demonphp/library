@@ -38,18 +38,20 @@
     $count = 0;
 
     do {
+        //接受一个Socket连接,接收失败
         if (($msgsock = socket_accept($sock)) < 0) {
             echo "socket_accept() failed: reason: " . socket_strerror($msgsock) . "\n";
             break;
         } else {
 
             //发到客户端
-            $msg ="测试成功！\n";
+            $msg ="测试成功!\n";
+            //写数据到socket缓存
             socket_write($msgsock, $msg, strlen($msg));
 
-            echo "测试成功了啊\n";
+            //echo $msg;
+            //读取指定长度的数据
             $buf = socket_read($msgsock,8192);
-
 
             $talkback = "收到的信息:$buf\n";
             echo $talkback;
@@ -65,4 +67,5 @@
 
     } while (true);
 
+    //关闭socket
     socket_close($sock);

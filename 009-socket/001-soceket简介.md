@@ -1,5 +1,6 @@
 # 1.相关文章
     http://www.cnblogs.com/thinksasa/archive/2013/02/26/2934206.html(深入浅出讲解：php的socket通信)
+    http://developer.51cto.com/art/201507/485853.htm(PHP Socket 编程过程详解)
 
 # 2.Socket是什么呢？
     Socket是应用层与TCP/IP协议族通信的中间软件抽象层，它是一组接口。在设计模式中，Socket其实就是一个门面模式，
@@ -53,3 +54,20 @@
     socket_strerror() 返回指定错误号的详细错误
     socket_write() 写数据到socket缓存
     socket_writev() 写数据到分散/聚合数组
+
+# 5.PHP服务器
+
+    第1步：设置变量，如“主机”和“端口”
+    第2步：创建socket
+    第3步：绑定socket到端口和主机
+    第4步：启动socket监听
+    第5步：接受连接
+    第6步：从客户端socket读取消息
+
+# 6.PHP客户端
+
+    第1步：设置变量，如“主机”和“端口”
+    第2步：创建socket
+    第3步：连接到服务端
+    第4步：写入服务端socket
+    第5步：阅读来自服务端的响应

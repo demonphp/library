@@ -1,21 +1,25 @@
 <?php
+
+   /*
+    +-------------------------------
+    *    @socket连接整个过程
+    +-------------------------------
+    *    @socket_create
+    *    @socket_connect
+    *    @socket_write
+    *    @socket_read
+    *    @socket_close
+    +--------------------------------
+    */
+
     error_reporting(E_ALL);
     set_time_limit(0);
-    //echo "<h2>TCP/IP Connection</h2>\n";
+
+    //1.设置ip与端口
     $port = 1935;
     $ip = "127.0.0.1";
-    /*
-     +-------------------------------
-     *    @socket连接整个过程
-     +-------------------------------
-     *    @socket_create
-     *    @socket_connect
-     *    @socket_write
-     *    @socket_read
-     *    @socket_close
-     +--------------------------------
-     */
 
+    //2.创建socket
     $socket = socket_create(AF_INET, SOCK_STREAM, SOL_TCP);
     if ($socket < 0) {
         echo "socket_create() failed: reason: " . socket_strerror($socket) . "\n";
@@ -24,6 +28,7 @@
     }
 
     echo "试图连接 '$ip' 端口 '$port'...\n";
+    //3.连接到服务端
     $result = socket_connect($socket, $ip, $port);
     if ($result < 0) {
         echo "socket_connect() failed.\nReason: ($result) " . socket_strerror($result) . "\n";
@@ -31,23 +36,20 @@
         echo "连接OK\n";
     }
 
-    $in = "Ho\r\n";
-    $in .= "first blood\r\n";
+    $in = "hello server";       //定义向服务器接收到的消息
     $out = '';
 
+    //4.写入服务端socket向(服务器发送消息)
     if(!socket_write($socket, $in, strlen($in))) {
         echo "socket_write() failed: reason: " . socket_strerror($socket) . "\n";
     }else {
-        echo "发送到服务器信息成功！\n";
-        echo "发送的内容为:<font color='red'>$in</font> <br>";
+        echo "send message to server:$in\n";
     }
 
+    //5.阅读来自服务端的响应(从服务器接收信息)
     while($out = socket_read($socket, 8192)) {
-        echo "接收服务器回传信息成功！\n";
-        echo "接受的内容为:",$out;
+        echo "receive message form server:".$out;
     }
 
-
-    echo "关闭SOCKET...\n";
+    //6.关闭socket
     socket_close($socket);
-    echo "关闭OK\n";

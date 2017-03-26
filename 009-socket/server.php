@@ -2,6 +2,7 @@
     //确保在连接客户端时不会超时
     set_time_limit(0);
 
+    //1.设置ip地址和端口
     $ip = '127.0.0.1';
     $port = 1935;
 
@@ -19,15 +20,17 @@
      +--------------------------------
      */
 
-    /*----------------    以下操作都是手册上的    -------------------*/
+    //2.创建socket
     if(($sock = socket_create(AF_INET,SOCK_STREAM,SOL_TCP)) < 0) {
         echo "socket_create() 失败的原因是:".socket_strerror($sock)."\n";
     }
 
+    //3.绑定socket
     if(($ret = socket_bind($sock,$ip,$port)) < 0) {
         echo "socket_bind() 失败的原因是:".socket_strerror($ret)."\n";
     }
 
+    //4.监听socket
     if(($ret = socket_listen($sock,4)) < 0) {
         echo "socket_listen() 失败的原因是:".socket_strerror($ret)."\n";
     }

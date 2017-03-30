@@ -1,0 +1,30 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+<script src='jquery.js'></script>
+<script>
+	//页面载入事件
+	$(function(){
+		//绑定相关事件
+		$('#btnok').bind('click',function(){
+			//发送Ajax
+			$.get('http://www.library.abc/jspon.php?fn=?',function(msg){
+				$(msg).each(function(i,item){
+					var id = item.id;
+					var title = item.title;
+					
+					$('#result').append(id+'-'+title+'<hr />');
+				});
+			},'jsonp');
+		});
+	});
+</script>
+</head>
+<body>
+<input type='button' id='btnok' value='获取数据' />
+<hr />
+<div id='result'></div>
+</body>
+</html>

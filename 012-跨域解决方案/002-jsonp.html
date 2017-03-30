@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>使用script标签向另一个域上的资源进行请求，传递参数fn，保存将来要执行的js函数名</title>
+    <script>
+        function callback(msg) {
+            document.write(msg);
+        }
+    </script>
+    <script src="http://www.library.abc/test.php?fn=callback"></script>
+</head>
+<body>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Insert title here</title>
+    <script>
+        function abc(msg) {
+            //得到的msg是一个数组,通过for循环遍历输出
+            for(var i=0;i<msg.length;i++) {
+                var id = msg[i].id;
+                var title = msg[i].title;
+                document.getElementById('result').innerHTML += id+'-'+title+'<hr />';
+            }
+        }
+    </script>
+    <script>
+        window.onload = function() {
+            //为按钮绑定相关事件
+            document.getElementById('btnok').onclick = function() {
+                var obj = document.createElement('script');
+                obj.src = 'http://www.library.abc/test.php?fn=abc';
+                //追加script对象到head标签中
+                document.getElementsByTagName('head')[0].appendChild(obj);
+            }
+        }
+    </script>
+</head>
+<body>
+<input type='button' id='btnok' value='获取数据' />
+<hr />
+<div id='result'></div>
+</body>
+</html>

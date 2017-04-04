@@ -25,6 +25,7 @@
     zset  (有序集合)  : 集合里面的内容是有序的。
 
 # 4.设置类型规范(个人认为,用于项目内规范)
+
    类型:      项目名_类型前缀_作用_key值(其中key值是多层的用:分割)
    string    项目名_st_作用_key值
    hash      项目名_ha_作用_key值
@@ -65,6 +66,6 @@
     3.discard：事务回滚，类似与关系型数据库中的：rollback
 
 # 7.相关文章
-    http://www.cnblogs.com/wang-meng/p/5808712.html  说明
 
-    http://www.cnblogs.com/myright/articles/5408276.html 扩展安装---1
+    http://www.cnblogs.com/wang-meng/p/5808712.html  说明
+    http://www.cnblogs.com/myright/articles/5408276.html 扩展安装---

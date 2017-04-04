@@ -1,4 +1,5 @@
 # String是最简单的类型
+
   一个 key对应一个Value，String类型是二进制安全的。
 
 ##（1）set(设置键，值)

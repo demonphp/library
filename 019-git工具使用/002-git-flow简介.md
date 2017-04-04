@@ -2,4 +2,5 @@
 
     ![''](img/git_flow.png)
 
+# 2.SourceTree创建Gitflow结构
 

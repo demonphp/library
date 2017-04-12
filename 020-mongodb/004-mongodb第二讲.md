@@ -73,4 +73,13 @@
 	不超过预留内层的时候则速度非常快反而超过了就要分配新的内存	    
 	则会消耗时间
 
-
+# 8.runCommand函数和findAndModify函数
+```javascript 	
+	runCommand可以执行mongoDB中的特殊函数	 
+	findAndModify就是特殊函数之一他的用于是返回update或remove后的文档  
+	runCommand({“findAndModify”:”processes”,       	
+	query:{查询器},		sort{排序},		 new:true		update:{更新器},		remove:true       }).value        ps = db.runCommand({               
+	"findAndModify":"persons",               "query":{"name":"text"},		      "update":{"$set":{"email":"1221"}},		     
+"new":true }).value do_something(ps)
+	http://www.cppblog.com/byc/archive/2011/07/15/151063.aspx
+```

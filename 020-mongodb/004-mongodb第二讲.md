@@ -64,9 +64,13 @@
 	我们要把type等于JS的文档增加一个相同的作者author是USPCAT
 	办法:db.text.update({"books.type":"JS"},{$set:{"books.$.author":"USPCAT"}})
 
-## 6.$addToSet与$each结合完成批量数组更新	   
+# 6.$addToSet与$each结合完成批量数组更新	   
 	db.text.update({_id:1000},{$addToSet:{books:{$each:[“JS”,”DB”]}}})          
 	$each会循环后面的数组把每一个数值进行$addToSet操作
 
+# 7.存在分配与查询效率	  
+	当document被创建的时候DB为其分配没存和预留内存当修改操作          
+	不超过预留内层的时候则速度非常快反而超过了就要分配新的内存	    
+	则会消耗时间
 
 
